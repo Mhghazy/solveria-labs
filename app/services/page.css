@@ -1,0 +1,124 @@
+@import '../about/page.css'; /* inherit page-container, page-header, page-title */
+
+.services-section {
+  margin-bottom: 6rem;
+}
+
+.section-heading {
+  margin-bottom: 3rem;
+}
+
+.section-heading.text-center {
+  text-align: center;
+}
+
+.section-heading h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.heading-line {
+  width: 60px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+.stack-subtitle {
+  color: var(--muted-foreground);
+  font-size: 1.1rem;
+}
+
+.offerings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+}
+
+.offering-card {
+  padding: 2.5rem;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.offering-card:hover {
+  transform: translateY(-5px);
+}
+
+.offering-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: rgba(var(--primary-rgb), 0.1);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.offering-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.offering-card p {
+  color: var(--muted-foreground);
+  line-height: 1.7;
+}
+
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.stack-card {
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  border-top: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.stack-card:hover {
+  border-top-color: var(--primary);
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stack-icon {
+  color: var(--foreground);
+}
+
+.nextjs-icon {
+  color: var(--foreground);
+}
+
+.python-icon {
+  color: #3776ab; /* Python blue */
+}
+
+.wp-icon {
+  color: #21759b; /* WordPress blue */
+}
+
+.stack-card h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.stack-card p {
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}

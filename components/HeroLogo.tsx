@@ -1,0 +1,41 @@
+"use client";
+
+import Image from "next/image";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
+
+export default function HeroLogo() {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering the theme-dependent image after client mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Return a placeholder structure during server render
+    return (
+      <div style={{ position: 'absolute', inset: 0, opacity: 0 }}></div>
+    );
+  }
+
+  const imageSrc = resolvedTheme === 'light' ? '/logo-light.png' : '/logo.png';
+  
+  return (
+    <Image 
+      src={imageSrc}
+      alt="Solveria Labs Logo Background" 
+      fill
+      style={{ 
+        objectFit: "cover",
+        filter: resolvedTheme === 'light' 
+          ? "drop-shadow(0 0 40px rgba(14, 165, 233, 0.15))" // Subtler shadow for light mode
+          : "drop-shadow(0 0 50px rgba(var(--primary-rgb), 0.6))"
+      }}
+      quality={100}
+      unoptimized={true}
+      priority
+    />
+  );
+}

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import logoLight from '../public/logo-light.png';
+import logoDark from '../public/logo.png';
 
 export default function HeroLogo() {
   const { resolvedTheme } = useTheme();
@@ -20,7 +22,7 @@ export default function HeroLogo() {
     );
   }
 
-  const imageSrc = resolvedTheme === 'light' ? '/logo-light.png' : '/logo.png';
+  const imageSrc = resolvedTheme === 'light' ? logoLight : logoDark;
   
   return (
     <Image 

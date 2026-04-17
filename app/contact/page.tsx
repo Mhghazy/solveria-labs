@@ -1,5 +1,6 @@
 import './page.css';
 import ContactForm from '../../components/ContactForm';
+import TechGlobe from '../../components/TechGlobe';
 import { Mail, MapPin, Clock } from 'lucide-react';
 
 export default function ContactPage() {
@@ -7,8 +8,12 @@ export default function ContactPage() {
     <main className="page-container contact-page">
       <div className="page-header">
         <h1 className="page-title">Get in <span className="text-gradient">Touch</span></h1>
-        <p className="page-subtitle">Ready to engineer your next digital product? We are standing by to collaborate.</p>
+        <p className="page-subtitle">
+          We collaborate with clients from everywhere in the world. As a fully remote team, our digital solutions transcend borders.
+        </p>
       </div>
+
+      <TechGlobe />
 
       <div className="contact-grid">
         <div className="contact-info">

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
 import AnimatedLogo from './AnimatedLogo';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import './Navbar.css';
 
@@ -55,9 +55,23 @@ export default function Navbar() {
         
         {/* Desktop Navigation */}
         <nav className="nav-links desktop-nav">
-          <Link href="/about">About</Link>
-          <Link href="/services">Services</Link>
-          <Link href="/projects">Our Work</Link>
+          <Link href="/about" className="nav-link-item">About</Link>
+          <div className="nav-dropdown-container">
+            <Link href="/services" className="nav-link-item dropdown-trigger">
+              Services <ChevronDown size={14} className="nav-chevron" />
+            </Link>
+            <div className="nav-dropdown">
+              <Link href="/services" className="dropdown-main">View All Services</Link>
+              <Link href="/services/ui-ux-systems">UI/UX for Systems</Link>
+              <Link href="/services/ai-integration">AI Integration</Link>
+              <Link href="/services/web-development">Web Development</Link>
+              <Link href="/services/database-infrastructure">Databases & Infra</Link>
+              <div className="dropdown-divider"></div>
+              <Link href="/comparison/nextjs-vs-wordpress" className="dropdown-highlight">Next.js vs WordPress</Link>
+            </div>
+          </div>
+          <Link href="/projects" className="nav-link-item">Our Work</Link>
+          <Link href="/ai-assistant">AI Assistant</Link>
           <ThemeToggle />
           <Link href="/contact" className="cta-button">Get in Touch</Link>
         </nav>
@@ -119,11 +133,29 @@ export default function Navbar() {
               <motion.div variants={linkVariants}>
                 <Link href="/about">About</Link>
               </motion.div>
-              <motion.div variants={linkVariants}>
-                <Link href="/services">Services</Link>
+              <motion.div variants={linkVariants} className="mobile-nav-item mobile-dropdown-container">
+                <div className="mobile-dropdown-trigger" onClick={(e) => {
+                  e.stopPropagation();
+                  const el = document.getElementById('mob-services-dropdown');
+                  if (el) el.classList.toggle('mob-dropdown-open');
+                }}>
+                  <span className="nav-link-item">Services</span>
+                  <ChevronDown size={20} className="nav-chevron mobile-chevron" />
+                </div>
+                <div id="mob-services-dropdown" className="mobile-dropdown">
+                  <Link href="/services" className="mobile-dropdown-main">View All Services</Link>
+                  <Link href="/services/ui-ux-systems" className="mobile-sub">- UI/UX for Systems</Link>
+                  <Link href="/services/ai-integration" className="mobile-sub">- AI Integration</Link>
+                  <Link href="/services/web-development" className="mobile-sub">- Web Development</Link>
+                  <Link href="/services/database-infrastructure" className="mobile-sub">- Databases & Infra</Link>
+                  <Link href="/comparison/nextjs-vs-wordpress" className="mobile-highlight mobile-sub">- Next.js vs WordPress</Link>
+                </div>
               </motion.div>
               <motion.div variants={linkVariants}>
                 <Link href="/projects">Our Work</Link>
+              </motion.div>
+              <motion.div variants={linkVariants}>
+                <Link href="/ai-assistant">AI Assistant</Link>
               </motion.div>
               <motion.div variants={linkVariants} style={{ marginTop: '2rem' }}>
                 <Link href="/contact" className="btn-primary" onClick={() => setIsOpen(false)}>Get in Touch</Link>

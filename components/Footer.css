@@ -46,7 +46,7 @@
   max-width: 1280px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1.5fr;
   gap: 4rem;
   margin-bottom: 3rem;
   position: relative;
@@ -81,7 +81,8 @@
   z-index: 1;
 }
 
-.footer-links h4 {
+.footer-links h4,
+.footer-socials h4 {
   font-family: var(--font-orbitron);
   font-size: 0.8rem;
   font-weight: 700;
@@ -137,9 +138,102 @@
   z-index: 1;
 }
 
+/* ── Social Icons ── */
+.footer-socials {
+  position: relative;
+  z-index: 1;
+}
+
+.social-icons-wrapper {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted-foreground);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle inner glow pseudo-element */
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.1;
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+  border-color: currentColor;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 15px currentColor;
+}
+
+.social-icon:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover svg {
+  transform: scale(1.1);
+}
+
+/* Brand Colors */
+.fb-icon:hover {
+  color: #1877f2;
+}
+
+.ig-icon:hover {
+  color: #e4405f;
+}
+
+.wa-icon:hover {
+  color: #25d366;
+}
+
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .footer-links a {
+    margin: 0 auto 0.6rem auto;
+  }
+  
+  .social-icons-wrapper {
+    justify-content: center;
+  }
+  
+  .footer-links a::after {
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center;
   }
 }
+

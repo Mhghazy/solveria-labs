@@ -1,0 +1,172 @@
+/* ─────────────────────────────────────────
+   STICKY SOCIALS
+───────────────────────────────────────── */
+
+.sticky-socials-container {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  pointer-events: none; /* Let clicks pass through container */
+}
+
+.sticky-socials-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto; /* Re-enable clicks for items */
+}
+
+/* Expansion Drawer */
+.social-links-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: rgba(10, 10, 15, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  padding: 0;
+}
+
+.sticky-socials-wrapper.open .social-links-drawer {
+  max-height: 300px;
+  opacity: 1;
+  padding: 10px;
+}
+
+/* Main Toggle Button */
+.sticky-toggle-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #000;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticky-toggle-btn:hover {
+  transform: scale(1.1);
+  background: var(--foreground);
+  color: var(--primary);
+}
+
+/* Individual Icon */
+.sticky-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--muted-foreground);
+  text-decoration: none;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticky-icon svg {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+/* Tooltip */
+.sticky-tooltip {
+  position: absolute;
+  left: 60px; /* Force tooltip to the right explicitly */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-orbitron);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Tooltip Triangle */
+.sticky-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -5px; /* Positioned outside the left edge */
+  right: auto;
+  transform: translateY(-50%);
+  border-width: 5px 5px 5px 0;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.8) transparent transparent;
+}
+
+.sticky-icon:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sticky-icon:hover .sticky-tooltip {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sticky-icon:hover svg {
+  transform: scale(1.1);
+}
+
+/* Hover Brand Lighting */
+.fb-sticky:hover {
+  color: #fff;
+  background: #1877f2;
+  box-shadow: 0 0 15px rgba(24, 119, 242, 0.6);
+  border-color: #1877f2;
+}
+
+.ig-sticky:hover {
+  color: #fff;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 0 15px rgba(228, 64, 95, 0.6);
+  border-color: transparent;
+}
+
+.wa-sticky:hover {
+  color: #fff;
+  background: #25d366;
+  box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+  border-color: #25d366;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .sticky-socials-container {
+    top: auto;
+    bottom: 20px;
+    left: 20px; /* Keep to bottom left corner */
+    transform: none;
+  }
+
+  /* Dropdown opens upwards on mobile instead of downwards */
+  .social-links-drawer {
+    flex-direction: column-reverse;
+  }
+}

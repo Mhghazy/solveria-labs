@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import AIChatPopup from '../components/AIChatPopup';
+import StickySocials from '../components/StickySocials';
 import { ThemeProvider } from '../components/ThemeProvider';
 
 const inter = Inter({
@@ -37,6 +38,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Navbar />
           {children}
+          <StickySocials />
           <AIChatPopup />
           <ScrollToTop />
           <Footer />
